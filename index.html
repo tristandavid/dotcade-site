@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dotcade: Retro Brick Games</title>
+<meta name="description" content="Classic dot-matrix arcade games for iPhone and Android. A Daily Challenge, weekly events and a new cartridge every month.">
+<meta property="og:title" content="Dotcade: Retro Brick Games">
+<meta property="og:description" content="Classic dot-matrix arcade games, a Daily Challenge and a new cartridge every month.">
+<meta property="og:image" content="img/hero.jpg">
+<link rel="icon" href="img/icon.png">
+<link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+<style>
+  :root {
+    --bg-top: #1a0b33; --bg-bottom: #07030f; --surface: #1d1036; --surface-hi: #2c1a50;
+    --pink: #ff3fa4; --cyan: #4ff3ff; --text: #f6ecff; --dim: #a08cc4;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0; color: var(--text);
+    font: 17px/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background: var(--bg-bottom);
+    background-image:
+      radial-gradient(circle at 1px 1px, rgba(255,63,164,.14) 1.4px, transparent 1.6px),
+      linear-gradient(180deg, var(--bg-top), var(--bg-bottom) 70%);
+    background-size: 22px 22px, 100% 100%;
+    background-attachment: fixed;
+  }
+  a { color: var(--cyan); }
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 0 20px; }
+
+  header { display: flex; align-items: center; gap: 12px; padding: 18px 0; }
+  header img { width: 40px; height: 40px; border-radius: 10px; }
+  header .brand { font-weight: 900; letter-spacing: 3px; }
+  header nav { margin-left: auto; display: flex; gap: 18px; font-size: 15px; }
+  header nav a { color: var(--dim); text-decoration: none; }
+  header nav a:hover { color: var(--text); }
+
+  .hero { text-align: center; padding: 28px 0 56px; }
+  .hero img.banner { width: 100%; max-width: 860px; border-radius: 22px; display: block; margin: 0 auto;
+    box-shadow: 0 0 60px rgba(255,63,164,.25); }
+  .hero h1 { font-size: clamp(28px, 5vw, 44px); line-height: 1.15; margin: 36px 0 12px; }
+  .hero p { color: var(--dim); font-size: 19px; max-width: 620px; margin: 0 auto 28px; }
+  .stores { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+  .store { display: inline-flex; flex-direction: column; align-items: flex-start; min-width: 190px;
+    padding: 11px 22px; border-radius: 14px; text-decoration: none; color: var(--text);
+    background: var(--surface-hi); border: 1.5px solid var(--cyan); }
+  .store small { color: var(--dim); font-size: 12px; letter-spacing: 1px; text-transform: uppercase; }
+  .store strong { font-size: 18px; }
+  .store[aria-disabled="true"] { border-color: var(--surface-hi); opacity: .8; cursor: default; }
+
+  section { padding: 56px 0; }
+  h2 { font-size: 15px; letter-spacing: 4px; color: var(--cyan); text-transform: uppercase; margin: 0 0 10px; }
+  .lead { font-size: clamp(24px, 3.4vw, 32px); font-weight: 800; line-height: 1.2; margin: 0 0 28px; max-width: 720px; }
+
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 16px; }
+  .card { background: rgba(29,16,54,.85); border: 1px solid var(--surface-hi); border-radius: 18px; padding: 22px; }
+  .card h3 { margin: 0 0 6px; font-size: 18px; }
+  .card p { margin: 0; color: var(--dim); font-size: 15px; }
+  .dot { display: inline-block; width: 10px; height: 10px; border-radius: 50%; background: var(--pink);
+    box-shadow: 0 0 10px var(--pink); margin-right: 8px; vertical-align: 2px; }
+
+  .shots { display: flex; gap: 16px; overflow-x: auto; padding-bottom: 12px; scroll-snap-type: x mandatory; }
+  .shots img { width: 230px; flex: none; border-radius: 18px; scroll-snap-align: start; }
+
+  .pass { background: linear-gradient(135deg, rgba(255,63,164,.22), rgba(79,243,255,.14));
+    border: 1.5px solid var(--pink); border-radius: 24px; padding: 32px; }
+  .pass ul { margin: 16px 0 0; padding-left: 20px; }
+  .pass li { margin: 4px 0; }
+  .pass .fine { color: var(--dim); font-size: 14px; margin-top: 16px; }
+
+  footer { border-top: 1px solid var(--surface-hi); padding: 28px 0 44px; color: var(--dim); font-size: 14px; }
+  footer .links { display: flex; gap: 20px; flex-wrap: wrap; margin-bottom: 10px; }
+
+  @media (max-width: 560px) {
+    header nav { display: none; }
+    .store { min-width: 0; flex: 1; }
+    .shots img { width: 70vw; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <img src="img/icon.png" alt="">
+    <span class="brand">DOTCADE</span>
+    <nav>
+      <a href="#features">Features</a>
+      <a href="#pass">Arcade Pass</a>
+      <a href="#support">Support</a>
+    </nav>
+  </header>
+
+  <div class="hero">
+    <img class="banner" src="img/hero.jpg" alt="Dotcade: Retro Brick Games">
+    <h1>The glowing dot-matrix handheld, back in your pocket.</h1>
+    <p>Classic arcade cartridges, a Daily Challenge, weekly events and a new cartridge every month. Free to play on iPhone and Android.</p>
+    <div class="stores">
+      <!-- Replace each href with the live store link once Dotcade is published, and remove aria-disabled. -->
+      <a class="store" href="#" aria-disabled="true"><small>Coming soon on the</small><strong>App Store</strong></a>
+      <a class="store" href="#" aria-disabled="true"><small>Coming soon on</small><strong>Google Play</strong></a>
+    </div>
+  </div>
+
+  <section id="features">
+    <h2>What's inside</h2>
+    <p class="lead">Simple controls, quick runs and one more go for a higher score.</p>
+    <div class="grid">
+      <div class="card"><h3><span class="dot"></span>Free to play</h3><p>Start with BRICKS, SNAKE, RACER and RALLY on the shelf.</p></div>
+      <div class="card"><h3><span class="dot"></span>Daily Challenge</h3><p>One cartridge, one speed, the same run for every player, every day.</p></div>
+      <div class="card"><h3><span class="dot"></span>Daily Bonus</h3><p>Come back each day and the reward grows. Shields protect your streak.</p></div>
+      <div class="card"><h3><span class="dot"></span>Weekly Events</h3><p>A new cartridge and twist every week, free even if it's locked.</p></div>
+      <div class="card"><h3><span class="dot"></span>New every month</h3><p>A fresh cartridge on the 1st: tanks, rhythm, puzzles, mini-golf and more.</p></div>
+      <div class="card"><h3><span class="dot"></span>Make it yours</h3><p>Screen themes, a classic handheld skin, collectible shells and seven music tracks.</p></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Screenshots</h2>
+    <div class="shots">
+      <img src="img/shot1.jpg" alt="The Games shelf">
+      <img src="img/shot2.jpg" alt="Daily Bonus and Daily Challenge">
+      <img src="img/shot3.jpg" alt="Today's Daily Challenge">
+      <img src="img/shot4.jpg" alt="The Weekly Event">
+      <img src="img/shot5.jpg" alt="The Shop">
+    </div>
+  </section>
+
+  <section id="pass">
+    <div class="pass">
+      <h2>Arcade Pass</h2>
+      <p class="lead" style="margin-bottom:0">Every cartridge the day it lands.</p>
+      <ul>
+        <li>Every cartridge, theme and shell</li>
+        <li>The music cartridges</li>
+        <li>Free continues and free mutator runs</li>
+      </ul>
+      <p class="fine">Optional. Monthly (with a 7-day free trial for new subscribers), yearly, or a one-time Lifetime purchase. Subscriptions renew automatically until cancelled in your App Store or Google Play account settings. Cartridge packs, shells and themes can also be bought individually, and tokens are earned just by playing.</p>
+    </div>
+  </section>
+
+  <section id="support">
+    <h2>Support</h2>
+    <p class="lead">Questions, bugs or purchase problems?</p>
+    <p>Send a message through the <a href="https://wealthboardapp.com/#help">contact form</a> and mention "Dotcade" in the subject. We aim to reply within 48 hours.</p>
+    <p><strong>Restoring purchases:</strong> open Dotcade, go to Settings, and tap <em>Restore purchases</em>. Use the same Apple Account or Google account you bought with.</p>
+    <p><strong>Cancelling a subscription:</strong> on iPhone, open Settings › your name › Subscriptions. On Android, open Google Play › your profile › Payments &amp; subscriptions.</p>
+  </section>
+
+  <footer>
+    <div class="links">
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/">Terms of Use</a>
+      <a href="https://wealthboardapp.com/#help">Contact</a>
+    </div>
+    © 2026 Tristan David · Ontario, Canada
+  </footer>
+</div>
+</body>
+</html>
